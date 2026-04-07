@@ -1,33 +1,37 @@
 aid: betalist
-url: https://raw.githubusercontent.com/api-evangelist/betalist/refs/heads/main/apis.yml
+url: 
+  https://raw.githubusercontent.com/api-evangelist/betalist/refs/heads/main/apis.yml
 apis: []
 name: BetaList
 tags:
-- Startups
-- Beta Testing
-- Product Discovery
+  - Startups
+  - Beta Testing
+  - Product Discovery
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 common:
-- url: https://betalist.com/
-  name: BetaList Website
-  type: Website
-- url: https://betalist.com/criteria
-  name: Submission Guidelines
-  type: Submit
-- url: https://betalist.com/faq
-  name: FAQ
-  type: FAQ
-- url: https://betalist.com/support
-  name: Support
-  type: Support
-- url: https://betalist.com/newsletter
-  name: Newsletter
-  type: Newsletter
-- url: https://betalist.com/advertise
-  name: Advertise
-  type: Advertise
-- url: https://x.com/betalist
-  name: BetaList on X
-  type: X
+  - url: https://betalist.com/
+    name: BetaList Website
+    type: Website
+  - url: https://betalist.com/criteria
+    name: Submission Guidelines
+    type: Submit
+  - url: https://betalist.com/faq
+    name: FAQ
+    type: FAQ
+  - url: https://betalist.com/support
+    name: Support
+    type: Support
+  - url: https://betalist.com/newsletter
+    name: Newsletter
+    type: Newsletter
+  - url: https://betalist.com/advertise
+    name: Advertise
+    type: Advertise
+  - url: https://x.com/betalist
+    name: BetaList on X
+    type: X
+description: >-
+  BetaList provides an overview of upcoming internet startups. Discover and get early
+  access to the future.
