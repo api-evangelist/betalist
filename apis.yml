@@ -20,6 +20,10 @@ description: >-
   through the web interface.
 apis: []
 common:
+  - type: GitHubOrganization
+    url: https://github.com/betalist
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/beta-list
   - type: Website
     url: https://betalist.com/
   - type: Submit
