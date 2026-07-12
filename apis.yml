@@ -20,6 +20,10 @@ description: >-
   through the web interface.
 apis: []
 common:
+  - type: DomainSecurity
+    url: security/betalist-domain-security.yml
+  - type: Blog
+    url: https://feeds.feedburner.com/BetaList
   - type: GitHubOrganization
     url: https://github.com/betalist
   - type: LinkedIn
