@@ -1,15 +1,23 @@
 aid: betalist
 accessModel:
   pricing: unknown
-  onboarding: unknown
+  onboarding: approval
   trial: false
   try_now: false
   public: false
-  label: Unknown
-  confidence: low
-  source: []
-  generated: '2026-07-22'
-  method: derived
+  label: Requires approval
+  confidence: high
+  source:
+  - https://betalist.com/support
+  - authentication/betalist-authentication.yml
+  generated: '2026-08-13'
+  method: searched
+  note: >-
+    Corrected by hand from the derived value. derive-access-model.py maps an apiKey
+    scheme to onboarding "self-serve", but BetaList's support page states API access is
+    granted "on a case-by-case basis" after an individually reviewed request, and the
+    request form itself requires a BetaList account — approval, not self-serve. No API
+    pricing is published either way, so pricing stays unknown.
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/betalist.png
 url: https://raw.githubusercontent.com/api-evangelist/betalist/refs/heads/main/apis.yml
 name: BetaList
@@ -19,21 +27,108 @@ tags:
   - Product Discovery
   - Early Adopters
   - Newsletters
+  - Startup Directory
+  - Company Data
+  - Product Launches
 kind: company
 created: '2026-04-19'
-modified: '2026-04-19'
+modified: '2026-08-13'
 description: >-
   BetaList is a platform for discovering upcoming internet startups and getting early
   access to innovative products before they go mainstream. Founded in 2010, BetaList
   curates pre-launch and recently launched startups across categories including SaaS,
   AI tools, analytics, developer tools, and more. Startups gain exposure through the
-  BetaList website, daily email newsletter, and social media channels. No public
-  developer API has been identified; startup discovery and submission are handled
-  through the web interface.
-apis: []
+  BetaList website, daily email newsletter, and social media channels. BetaList also
+  operates a small read-only REST API at api.betalist.com/v1 covering startups,
+  regions, and markets; its documentation is published publicly as a GitHub gist by
+  founder Marc Kohlbrugge and linked from the BetaList support page, but access tokens
+  are issued case-by-case on request rather than self-service.
+apis:
+  - name: BetaList API
+    description: >-
+      Read-only REST API over the BetaList startup directory. Three documented
+      collections — startups (list + detail, filterable by region_id and market_id),
+      regions (list + detail), and markets (list; markets form a directed acyclic
+      graph so a market can have multiple parents and children). Responses are JSON.
+      Every request is authenticated with an access_token query-string parameter;
+      tokens are granted case-by-case after a request through BetaList's contact form
+      or the founder's Typeform. Paging is via per_page (max 100 for startups, 500 for
+      regions and markets) and page. Documentation is a public GitHub gist maintained
+      by BetaList founder Marc Kohlbrugge and linked from betalist.com/support.
+    humanURL: https://gist.github.com/marckohlbrugge/5a29bf1ba628bb4ca960
+    baseURL: https://api.betalist.com/v1
+    tags:
+      - startups
+      - startup-directory
+      - product-discovery
+      - early-adopters
+      - company-data
+      - rest
+    properties:
+      - type: Documentation
+        url: https://gist.github.com/marckohlbrugge/5a29bf1ba628bb4ca960
+      - type: APIReference
+        url: https://gist.github.com/marckohlbrugge/5a29bf1ba628bb4ca960
+      - type: SignUp
+        url: https://marc.typeform.com/to/KOdlOu
+    x-evidence:
+      verified: '2026-08-13'
+      method: probed
+      docs_url: https://gist.github.com/marckohlbrugge/5a29bf1ba628bb4ca960
+      docs_status: 200
+      docs_describes: >-
+        Named base URL (api.betalist.com/v1), three named collections with paths,
+        query parameters, an authentication parameter, and worked example URLs.
+      docs_linked_from: https://betalist.com/support
+      endpoint_checks:
+        - url: https://api.betalist.com/v1/startups
+          status: 401
+        - url: https://api.betalist.com/v1/markets
+          status: 401
+        - url: https://api.betalist.com/v1/regions
+          status: 401
+        - url: https://api.betalist.com/openapi.json
+          status: 404
+      note: >-
+        The documented routes answer 401 (token required) while undefined paths on the
+        same host answer the Rails default 404, so the routes are real and gated rather
+        than absent. No machine-readable specification is published anywhere; nothing
+        was generated to fill that gap.
 common:
   - type: DomainSecurity
     url: security/betalist-domain-security.yml
+  - type: Documentation
+    url: https://gist.github.com/marckohlbrugge/5a29bf1ba628bb4ca960
+  - type: APIReference
+    url: https://gist.github.com/marckohlbrugge/5a29bf1ba628bb4ca960
+  - type: Authentication
+    url: authentication/betalist-authentication.yml
+  - type: Conventions
+    url: conventions/betalist-conventions.yml
+  - type: DataModel
+    url: data-model/betalist-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/betalist-lifecycle.yml
+  - type: Conformance
+    url: conformance/betalist-conformance.yml
+  - type: Plans
+    url: plans/betalist-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/betalist-rate-limits.yml
+  - type: Packages
+    url: packages/betalist-packages.yml
+  - type: LLMsTxt
+    url: llms/betalist-llms.txt
+  - type: Pricing
+    url: https://betalist.com/advertise
+  - type: SignUp
+    url: https://betalist.com/sign_up
+  - type: Login
+    url: https://betalist.com/sign_in
+  - type: TermsOfService
+    url: https://betalist.com/terms
+  - type: PrivacyPolicy
+    url: https://betalist.com/privacy
   - type: Blog
     url: https://feeds.feedburner.com/BetaList
   - type: GitHubOrganization
@@ -82,3 +177,8 @@ maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
 specificationVersion: '0.19'
+x-enrichment:
+  date: '2026-08-13'
+  status: enriched
+  artifacts_added: 11
+  pass: local-v1
