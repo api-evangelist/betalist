@@ -5,7 +5,7 @@
       "source": "https://feeds.feedburner.com/BetaList",
       "feed_url": "https://feeds.feedburner.com/BetaList",
       "title": "",
-      "saved": 25,
+      "saved": 1,
       "method": "feed"
     },
     {
@@ -13,10 +13,16 @@
       "feed_url": "https://raw.githubusercontent.com/api-evangelist/betalist/refs/heads/main/apis.yml",
       "title": "",
       "saved": 0,
-      "method": "none",
-      "error": "parse_failed"
+      "method": "none"
+    },
+    {
+      "source": "https://betalist.com/privacy",
+      "feed_url": "https://feeds.feedburner.com/BetaList",
+      "title": "",
+      "saved": 0,
+      "method": "discovered"
     }
   ],
-  "fetched": "2026-08-06T13:56:59Z",
-  "post_count": 175
+  "fetched": "2026-08-15T12:22:01Z",
+  "post_count": 201
 }
