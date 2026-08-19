@@ -1,0 +1,58 @@
+generated: '2026-08-13'
+method: searched
+source: https://gist.github.com/marckohlbrugge/5a29bf1ba628bb4ca960
+versioning:
+  scheme: uri-path
+  current: v1
+  since: '2014'
+  policy_url: null
+  note: >-
+    v1 is the only version ever documented. The documentation gist was authored in
+    2014 and the API is still linked from betalist.com/support in 2026, so v1 has run
+    unversioned-in-practice for over a decade.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  deprecation_header: false
+  change_notice: email
+  statement: >-
+    "We might change/remove API functionality at any time. We will email you before we
+    make big changes."
+  note: >-
+    This is a change-notification commitment to token holders, not a deprecation
+    policy: no notice period, no sunset date, no RFC 8594 Sunset/Deprecation headers,
+    and no public page. No `Deprecation` pointer is emitted in apis.yml.
+sla:
+  url: null
+  uptime_target: null
+status_page:
+  url: null
+  probed:
+    - url: https://status.betalist.com/
+      status: 000
+      note: Host does not resolve.
+    - url: https://betalist.com/status
+      status: 404
+  note: No status page exists; no `StatusPage` pointer is emitted.
+changelog:
+  url: null
+  probed:
+    - url: https://betalist.com/changelog
+      status: 404
+  note: No dated API changelog is published, so no changelog/ artifact was written.
+roadmap:
+  published: true
+  url: https://gist.github.com/marckohlbrugge/5a29bf1ba628bb4ca960
+  items:
+    - Include pagination info in the JSON response (or headers).
+    - Show children markets when calling /markets/:id.
+    - Consider including startup descriptions (currently excluded for SEO / duplicate-content reasons).
+    - Consider making parts of the API public (no access token required).
+    - Expand the terms.
+  note: >-
+    A TODO list at the end of the API documentation gist. It is a real, provider-authored
+    statement of intent, but it is a section of the docs rather than a maintained roadmap
+    page, and none of the items have shipped since 2014 — so no `Roadmap` pointer is
+    emitted.
+deprecated_operations: []
+checked: '2026-08-13'

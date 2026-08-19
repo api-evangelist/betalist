@@ -1,0 +1,66 @@
+generated: '2026-08-13'
+method: searched
+source: https://betalist.com/support
+plan_count: 0
+plans: []
+api_access:
+  model: request-and-review
+  self_service: false
+  published_pricing: false
+  free_tier: unknown
+  note: >-
+    BetaList publishes no plans, tiers, quotas or prices for its API. The support page
+    states: "We offer API access on a case-by-case basis. To request access, please
+    reach out through our contact form and include: (1) what you plan to use the API
+    for, (2) your intended use case, and (3) estimated request volume. We review each
+    request individually to ensure the API is used appropriately. Once approved, you'll
+    receive an API key and access to our API documentation." Nothing states whether
+    approved access is free or paid, so no price is recorded either way. plan_count is
+    0 because BetaList publishes zero API plans — not because none were looked for.
+  request_channels:
+    - url: https://betalist.com/contact
+      status: 200
+      note: Redirects anonymous visitors to /sign_in, so a BetaList account is required.
+    - url: https://marc.typeform.com/to/KOdlOu
+      status: 200
+      note: '"Request your API token here" — the form named in the API documentation gist.'
+platform_plans:
+  note: >-
+    NOT API plans. BetaList does publish prices for its promotion products, recorded
+    here for completeness and explicitly scoped out of plan_count so they cannot be
+    read as API commercial terms.
+  source: https://betalist.com/advertise
+  status: 200
+  tiers:
+    - name: Sponsorship
+      price: 4999
+      currency: USD
+      period: month
+      includes:
+        - Homepage banner placement
+        - Newsletter promotion (60k+ subscribers)
+        - Social media coverage
+      note: Custom packages by email.
+    - name: Boost
+      price: 99
+      currency: USD
+      period: week
+      includes:
+        - Homepage placement
+        - Newsletter slot
+      alternatives:
+        - price: 199
+          currency: USD
+          period: month
+      note: Self-service promotion for already-featured startups; cancel anytime.
+    - name: Startup submission
+      price: null
+      currency: USD
+      period: one-time
+      note: >-
+        All submissions are paid and there is no free option; the support page says
+        current plans and prices are shown at the end of the submission form rather
+        than on a public pricing page, and a full refund is issued automatically if a
+        startup is not selected. No price is recorded because none is published outside
+        the form.
+checked: '2026-08-13'

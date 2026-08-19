@@ -1,0 +1,61 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  RubyGems API (rubygems.org/api/v1/gems/betalist.json), GitHub org github.com/betalist,
+  npm registry, PyPI, crates.io
+note: >-
+  One first-party client library exists and it is a placeholder. The `betalist` gem was
+  published by BetaList founder Marc Kohlbrugge from the BetaList GitHub org on
+  2014-08-16 at version 0.0.0 and has never been updated; its entire implementation is
+  a `Betalist.hi` method that prints "Hello world!", and its README calls it "Ruby
+  bindings for the upcoming BetaList API". It is genuinely first-party, so it is
+  recorded as official, but it is NOT a working SDK — no `SDKs` pointer is emitted in
+  apis.yml, because doing so would credit BetaList with client-library coverage it does
+  not have. Twelve years of no releases against a live, still-documented API is the
+  clearest decay signal on this provider.
+packages:
+  - language: ruby
+    registry: rubygems
+    name: betalist
+    url: https://rubygems.org/gems/betalist
+    install: gem install betalist
+    official: true
+    version: 0.0.0
+    published: '2014-08-16'
+    downloads: 4206
+    repository: https://github.com/betalist/betalist-ruby
+    repository_last_push: '2014-08-16'
+    license: MIT
+    author: Marc Kohlbrugge
+    status: placeholder
+    functional: false
+    note: >-
+      lib/betalist.rb contains only `class Betalist; def self.hi; puts "Hello world!";
+      end; end`. The gem makes no HTTP calls and implements none of the documented
+      /v1/startups, /v1/regions or /v1/markets endpoints.
+registries_checked:
+  - registry: rubygems
+    query: betalist
+    status: 200
+    result: found (placeholder gem, see above)
+  - registry: npm
+    query: betalist
+    status: 404
+    result: none
+  - registry: pypi
+    query: betalist
+    status: 404
+    result: none
+  - registry: crates.io
+    query: betalist
+    status: 404
+    result: none
+  - registry: github
+    query: github.com/betalist
+    status: 200
+    result: >-
+      5 public repos; only betalist-ruby is an API client. The others are an Alfred
+      workflow and three forks of unrelated libraries (cloak, jquery-infinite-pages,
+      dropbox_api).
+official_sdk_count: 0
+official_package_count: 1

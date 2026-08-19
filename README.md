@@ -42,7 +42,7 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-BetaList is a platform for discovering upcoming internet startups and getting early access to innovative products before they go mainstream. Founded in 2010, BetaList curates pre-launch and recently launched startups across categories including SaaS, AI tools, analytics, developer tools, and more. Startups gain exposure through the BetaList website, daily email newsletter, and social media channels. No public developer API has been identified; startup discovery and submission are handled through the web interface.
+BetaList is a platform for discovering upcoming internet startups and getting early access to innovative products before they go mainstream. Founded in 2010, BetaList curates pre-launch and recently launched startups across categories including SaaS, AI tools, analytics, developer tools, and more. Startups gain exposure through the BetaList website, daily email newsletter, and social media channels. BetaList also operates a small read-only REST API at api.betalist.com/v1 covering startups, regions, and markets; its documentation is published publicly as a GitHub gist by founder Marc Kohlbrugge and linked from the BetaList support page, but access tokens are issued case-by-case on request rather than self-service.
 
 **URL:** [https://betalist.com/](https://betalist.com/)
 

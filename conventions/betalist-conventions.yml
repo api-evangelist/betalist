@@ -1,0 +1,104 @@
+generated: '2026-08-13'
+method: searched
+source: https://gist.github.com/marckohlbrugge/5a29bf1ba628bb4ca960
+docs: https://gist.github.com/marckohlbrugge/5a29bf1ba628bb4ca960
+note: >-
+  Cross-cutting request/response semantics for the BetaList API, read from the
+  provider's own published API documentation gist (linked from betalist.com/support)
+  and from live unauthenticated probes. BetaList publishes no OpenAPI, so nothing here
+  is derived from a specification; anything the documentation does not state is
+  recorded as undocumented rather than inferred.
+authentication:
+  style: api-key-in-query
+  parameter: access_token
+  detail: authentication/betalist-authentication.yml
+versioning:
+  scheme: uri-path
+  current: v1
+  base: https://api.betalist.com/v1
+  policy_documented: false
+  note: >-
+    Only v1 has ever been documented. The docs state "We might change/remove API
+    functionality at any time. We will email you before we make big changes." — an
+    email notice commitment, not a versioning or deprecation policy.
+pagination:
+  style: page-number
+  parameters:
+    - name: per_page
+      description: Number of objects returned.
+      required: false
+      max:
+        startups: 100
+        regions: 500
+        markets: 500
+    - name: page
+      description: Which page of results to return.
+      required: false
+  response_fields: []
+  note: >-
+    Pagination metadata is NOT returned. The docs' own TODO list records "include
+    pagination info in JSON response (or headers?)" as outstanding, so a client cannot
+    read a total or a next cursor and must page until a short/empty result. At the time
+    the docs were written there were 39 pages of startups at per_page=100.
+filtering:
+  parameters:
+    - name: region_id
+      applies_to: /startups
+      description: Filter startups by Region id (e.g. 470 = the Netherlands).
+    - name: market_id
+      applies_to: /startups
+      description: Filter startups by Market id (e.g. 500 = Messaging).
+  combinable: true
+  note: region_id and market_id can be combined on the same request.
+field_expansion:
+  supported: false
+  note: >-
+    No expand/fields parameter is documented. The docs note startup descriptions are
+    deliberately excluded from responses "due to SEO / duplicate content concerns", and
+    list including them as a possible future change.
+idempotency:
+  supported: false
+  note: >-
+    The documented surface is read-only (GET collections and details), so there are no
+    unsafe operations and no idempotency-key contract is published. No Idempotency
+    pointer is emitted for this provider.
+metadata:
+  supported: false
+request_tracing:
+  request_id_header: null
+  documented: false
+error_envelope:
+  documented: false
+  observed:
+    - status: 401
+      body: empty
+      content_type: text/html
+      note: Unauthenticated requests return a bare 401 with a zero-length body.
+    - status: 404
+      body: Rails default "The page you were looking for doesn't exist (404)" HTML page
+      content_type: text/html
+      note: Undefined paths on api.betalist.com fall through to the framework error page rather than a JSON error.
+  format: null
+rate_limit_signaling:
+  headers: []
+  documented: false
+  detail: rate-limits/betalist-rate-limits.yml
+caching:
+  guidance: >-
+    "Do use caching where possible" — the API documentation asks consumers to cache
+    rather than publishing cache-control guidance or conditional-request support.
+    No ETag/If-None-Match or Last-Modified support is documented.
+attribution_and_use:
+  source: https://gist.github.com/marckohlbrugge/5a29bf1ba628bb4ca960
+  required:
+    - Include a link back to https://betalist.com/ when displaying content received through the API.
+    - Notify marc@betalist.com before making a project built on the API publicly available.
+  prohibited:
+    - Republishing BetaList content in bulk (CSV/XML download, re-exposed API).
+    - Building a competing startup-discovery platform on the content without prior explicit approval.
+    - Scraping the website for content the API does not return without prior explicit approval.
+related:
+  authentication: authentication/betalist-authentication.yml
+  data_model: data-model/betalist-data-model.yml
+  lifecycle: lifecycle/betalist-lifecycle.yml
+  rate_limits: rate-limits/betalist-rate-limits.yml

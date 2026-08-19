@@ -1,0 +1,66 @@
+generated: '2026-08-13'
+method: searched
+source: https://gist.github.com/marckohlbrugge/5a29bf1ba628bb4ca960
+docs: https://gist.github.com/marckohlbrugge/5a29bf1ba628bb4ca960
+note: >-
+  Derived from the BetaList API documentation gist published by founder Marc
+  Kohlbrugge and linked from https://betalist.com/support ("How do I get access to
+  the BetaList API?"). BetaList publishes no OpenAPI, so there are no securitySchemes
+  to derive from; every field below is quoted from that documentation or observed on a
+  live unauthenticated request.
+summary:
+  types:
+    - apiKey
+  api_key_in:
+    - query
+  oauth2_flows: []
+  self_service: false
+  onboarding: request
+schemes:
+  - name: access_token
+    type: apiKey
+    in: query
+    parameter: access_token
+    description: >-
+      "Authenticate all requests with ?access_token=YOUR_TOKEN_HERE". A single opaque
+      bearer-style token passed on the query string; the documentation defines no
+      scopes, no expiry, and no refresh or rotation flow.
+    sources:
+      - https://gist.github.com/marckohlbrugge/5a29bf1ba628bb4ca960
+token_issuance:
+  self_service: false
+  model: request-and-review
+  channels:
+    - kind: typeform
+      url: https://marc.typeform.com/to/KOdlOu
+      status: 200
+      source: https://gist.github.com/marckohlbrugge/5a29bf1ba628bb4ca960
+      note: '"Request your API token here" — the request form named in the API docs.'
+    - kind: contact-form
+      url: https://betalist.com/contact
+      status: 200
+      requires_account: true
+      source: https://betalist.com/support
+      note: >-
+        The support page directs API requests here and asks for (1) intended use of the
+        API, (2) the use case, and (3) estimated request volume; BetaList reviews each
+        request individually. The form itself redirects anonymous visitors to
+        /sign_in, so a BetaList account is required to file the request.
+observed:
+  - url: https://api.betalist.com/v1/startups
+    status: 401
+    checked: '2026-08-13'
+    note: >-
+      Unauthenticated request returns 401 with an empty body and no WWW-Authenticate
+      challenge, no error envelope, and no problem+json document.
+  - url: https://api.betalist.com/v1/markets
+    status: 401
+    checked: '2026-08-13'
+  - url: https://api.betalist.com/v1/regions
+    status: 401
+    checked: '2026-08-13'
+gaps:
+  - Token is carried in the query string, so it lands in server logs, browser history and Referer headers; no header-based alternative is documented.
+  - No documented token expiry, rotation, or revocation.
+  - No scopes or permission model — one token grants the whole read surface.
+  - 401 responses carry no body, so a client cannot distinguish a missing token from a revoked one.

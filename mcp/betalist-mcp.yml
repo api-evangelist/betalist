@@ -1,0 +1,33 @@
+generated: '2026-08-13'
+method: searched
+status: none
+source: >-
+  Searched the BetaList support/FAQ page, the API documentation gist, the
+  github.com/betalist organisation, npm and the public MCP listings.
+note: >-
+  BetaList ships no MCP server, hosted or local, and no OpenAPI exists to derive a
+  candidate tool list from, so no tools are listed and NO MCPServer pointer is written
+  into apis.yml. Third parties resell scraped BetaList data through their own
+  platforms; none of that is BetaList's surface and none of it is recorded here.
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: none
+  verified: searched
+tools: []
+searched:
+  - source: https://betalist.com/support
+    status: 200
+    result: no MCP mention
+  - source: https://gist.github.com/marckohlbrugge/5a29bf1ba628bb4ca960
+    status: 200
+    result: no MCP mention
+  - source: https://api.github.com/orgs/betalist/repos
+    status: 200
+    result: 5 repos, none MCP-related
+  - source: https://registry.npmjs.org/betalist
+    status: 404
+    result: none
+checked: '2026-08-13'

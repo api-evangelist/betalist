@@ -1,0 +1,69 @@
+generated: '2026-08-13'
+method: derived
+source: >-
+  https://gist.github.com/marckohlbrugge/5a29bf1ba628bb4ca960 plus live probes of
+  api.betalist.com and betalist.com
+note: >-
+  BetaList makes no compliance or standards claim anywhere on its public surface, and
+  publishes no certifications, so no `Compliance` pointer is emitted. Every entry below
+  is an assessment against the published documentation and observed responses, not a
+  provider claim.
+standards:
+  - id: openapi
+    conforms: false
+    evidence: >-
+      No OpenAPI or Swagger document at any probed location on betalist.com or
+      api.betalist.com (/openapi.json, /openapi.yaml, /swagger.json, /api-docs all 404).
+  - id: asyncapi
+    conforms: false
+    evidence: No event, streaming or webhook surface is published.
+  - id: oauth2
+    conforms: false
+    evidence: >-
+      Authentication is a single opaque token on the query string; no authorization or
+      token endpoint, and /.well-known/oauth-authorization-server returns 404.
+  - id: oidc
+    conforms: false
+    evidence: /.well-known/openid-configuration returns 404.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: >-
+      Errors are not application/problem+json — an unauthenticated call returns a bare
+      401 with an empty body, and unknown paths return the framework's HTML 404 page.
+  - id: rfc9116-security-txt
+    conforms: false
+    evidence: /.well-known/security.txt returns 404 on both hosts.
+  - id: rfc8594-sunset-header
+    conforms: false
+    evidence: >-
+      No Sunset or Deprecation header support is documented; the only change commitment
+      is an email notice to token holders.
+  - id: rfc8615-well-known
+    conforms: false
+    evidence: No /.well-known document of any kind is served; see well-known/betalist-well-known.yml.
+  - id: a2a-agent-card
+    conforms: false
+    evidence: /.well-known/agent-card.json and /.well-known/agent.json both 404 on both hosts.
+  - id: mcp
+    conforms: false
+    evidence: No MCP server is published or referenced; see mcp/betalist-mcp.yml.
+  - id: rest-json
+    conforms: true
+    evidence: >-
+      Resource-oriented HTTPS paths under a /v1 prefix with collection and detail
+      endpoints returning JSON, as documented in the gist.
+  - id: pagination
+    conforms: partial
+    evidence: >-
+      page/per_page parameters are documented with per-collection maxima, but no
+      pagination metadata is returned in the body or headers — the docs' own TODO lists
+      this as outstanding.
+  - id: idempotency
+    conforms: not-applicable
+    evidence: The documented surface is read-only; there are no unsafe operations.
+  - id: tls
+    conforms: true
+    evidence: >-
+      Both betalist.com and api.betalist.com negotiate TLSv1.3 and http:// URLs in the
+      documentation redirect to https; see security/betalist-domain-security.yml.
+      Note the published documentation still shows http:// base URLs.

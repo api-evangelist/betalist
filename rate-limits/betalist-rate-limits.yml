@@ -1,0 +1,27 @@
+generated: '2026-08-13'
+method: searched
+source: https://gist.github.com/marckohlbrugge/5a29bf1ba628bb4ca960
+docs: https://gist.github.com/marckohlbrugge/5a29bf1ba628bb4ca960
+limit_count: 0
+limits: []
+headers: []
+exhaustion_status: null
+note: >-
+  BetaList publishes no rate limits for its API. The documentation gist names no
+  quota, window, burst or per-key ceiling, and defines no rate-limit response headers
+  or 429 behaviour. The only related guidance is "Do use caching where possible" and
+  a prohibition on making the content available in bulk. Volume is instead handled at
+  onboarding: the support page asks every applicant for an "estimated request volume"
+  and BetaList reviews each request individually, so limits are negotiated per token
+  rather than published. Live probing could not observe headers because every
+  unauthenticated response is a bare 401 with no headers of interest. An honest zero.
+observed:
+  - url: https://api.betalist.com/v1/startups
+    status: 401
+    rate_limit_headers: []
+    checked: '2026-08-13'
+pagination_ceilings:
+  note: >-
+    Not rate limits, but the only published request-size ceilings: per_page is capped
+    at 100 for /v1/startups and 500 for /v1/regions and /v1/markets.
+  detail: conventions/betalist-conventions.yml

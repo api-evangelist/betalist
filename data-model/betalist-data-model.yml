@@ -1,0 +1,80 @@
+generated: '2026-08-13'
+method: searched
+source: https://gist.github.com/marckohlbrugge/5a29bf1ba628bb4ca960
+note: >-
+  Entity graph read from the BetaList API documentation gist. BetaList publishes no
+  OpenAPI and the API is token-gated, so no response schemas could be observed: only
+  the three collections the documentation names, the identifiers it shows in worked
+  examples, and the relationships it describes in prose are recorded. Field-level
+  attributes are deliberately absent rather than guessed.
+entities:
+  - name: Startup
+    collection: /v1/startups
+    detail: /v1/startups/{id}
+    example: https://api.betalist.com/v1/startups/7503
+    id_type: integer
+    known_fields: []
+    excluded_fields:
+      - name: description
+        reason: >-
+          The documentation states startup descriptions are not included in API
+          responses "due to SEO / duplicate content concerns"; including them is listed
+          as a possible future change.
+  - name: Region
+    collection: /v1/regions
+    detail: /v1/region/{id}
+    example: https://api.betalist.com/v1/region/470
+    id_type: integer
+    known_fields: []
+    note: >-
+      The documentation says the detail endpoint "currently doesn't show any extras"
+      beyond what the list returns. Note the detail path is singular (/v1/region/470)
+      while the collection is plural (/v1/regions) — as published.
+  - name: Market
+    collection: /v1/markets
+    detail: /v1/markets/{id}
+    id_type: integer
+    known_fields: []
+    structure: directed-acyclic-graph
+    note: >-
+      "Markets use a Directed Acyclic Graph, so they can have multiple children (e.g.
+      'Mobile Health' as a child of 'Mobile') and multiple parents (e.g. 'Mobile' and
+      'Health' are both parents for 'Mobile Health')." The docs' TODO records that
+      child markets are not yet returned when calling /markets/:id.
+relationships:
+  - from: Startup
+    to: Region
+    kind: belongs_to
+    via: region_id
+    evidence: >-
+      /v1/startups?region_id=470 is documented as "startups from the Netherlands".
+  - from: Startup
+    to: Market
+    kind: belongs_to
+    via: market_id
+    evidence: >-
+      /v1/startups?market_id=500 is documented as all "Messaging" startups.
+  - from: Market
+    to: Market
+    kind: has_many
+    via: children
+    evidence: Markets form a DAG with multiple children per node.
+  - from: Market
+    to: Market
+    kind: belongs_to_many
+    via: parents
+    evidence: Markets form a DAG with multiple parents per node.
+example_identifiers:
+  - entity: Region
+    id: 470
+    label: Netherlands
+  - entity: Market
+    id: 500
+    label: Messaging
+  - entity: Startup
+    id: 7503
+    label: unnamed detail example in the documentation
+gaps:
+  - No response schema, field list, or example payload is published for any entity.
+  - No machine-readable specification (OpenAPI/JSON Schema) exists to bind these entities to.
+  - Field-level detail would require an approved access token; nothing was inferred in its absence.
