@@ -58,6 +58,13 @@ apis:
     humanURL: https://gist.github.com/marckohlbrugge/5a29bf1ba628bb4ca960
     baseURL: https://api.betalist.com/v1
     tags:
+      - Startups
+      - Startup Directory
+      - Product Discovery
+      - Early Adopters
+      - Company Data
+      - REST
+    tags_raw:
       - startups
       - startup-directory
       - product-discovery
