@@ -5,7 +5,7 @@
       "source": "https://feeds.feedburner.com/BetaList",
       "feed_url": "https://feeds.feedburner.com/BetaList",
       "title": "",
-      "saved": 1,
+      "saved": 0,
       "method": "feed"
     },
     {
@@ -23,6 +23,6 @@
       "method": "discovered"
     }
   ],
-  "fetched": "2026-08-15T12:22:01Z",
-  "post_count": 201
+  "fetched": "2026-08-22T20:20:02Z",
+  "post_count": 226
 }
