@@ -1,4 +1,4 @@
-# BetaList (betalist)
+# BetaList
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,51 +66,103 @@
 
 BetaList is a platform for discovering upcoming internet startups and getting early access to innovative products before they go mainstream. Founded in 2010, BetaList curates pre-launch and recently launched startups across categories including SaaS, AI tools, analytics, developer tools, and more. Startups gain exposure through the BetaList website, daily email newsletter, and social media channels. BetaList also operates a small read-only REST API at api.betalist.com/v1 covering startups, regions, and markets; its documentation is published publicly as a GitHub gist by founder Marc Kohlbrugge and linked from the BetaList support page, but access tokens are issued case-by-case on request rather than self-service.
 
-**URL:** [https://betalist.com/](https://betalist.com/)
+**Areas:** Startups · Beta Testing · Product Discovery · Early Adopters · Newsletters · Startup Directory · Company Data · Product Launches
 
-**Run:** [Capabilities Using Naftiko](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=company-api-evangelist&utm_content=repo)
+## BetaList on APIs.io
 
-## Tags:
+Everything profiled for BetaList is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/betalist/](https://apis.io/providers/betalist/)** — or go straight to one of the APIs or properties below.
 
- - Startups, Beta Testing, Product Discovery, Early Adopters, Newsletters
+### APIs (1)
 
-## Timestamps
+- [BetaList API](https://apis.io/apis/betalist/betalist-api/) — Read-only REST API over the BetaList startup directory. Three documented collections — startups (list + detail, filterable by region_id and market_id),…
 
-- **Created:** 2026-04-19
-- **Modified:** 2026-04-19
+### Published properties
 
-## Common Properties
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Betalist Authentication](https://apis.io/security/betalist/betalist-authentication/)
+- [Betalist Domain Security](https://apis.io/security/betalist/betalist-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Betalist Plans Pricing](https://apis.io/plans/betalist/betalist-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Betalist Rate Limits](https://apis.io/rate-limits/betalist/betalist-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://betalist.com/)
-- [Submit](https://betalist.com/submit)
-- [FAQ](https://betalist.com/faq)
+- [Documentation](https://gist.github.com/marckohlbrugge/5a29bf1ba628bb4ca960)
+- [API reference](https://gist.github.com/marckohlbrugge/5a29bf1ba628bb4ca960)
+- [Pricing](https://betalist.com/advertise)
+- [Sign up](https://betalist.com/sign_up)
 - [Support](https://betalist.com/support)
-- [Newsletter](https://betalist.com/newsletter)
-- [X](https://x.com/betalist)
+- [Blog](https://feeds.feedburner.com/BetaList)
+- [Terms of service](https://betalist.com/terms)
+- [Privacy policy](https://betalist.com/privacy)
+- [GitHub](https://github.com/betalist)
 
-## Features
+## API Evangelist rating
 
-| Name | Description |
-|------|-------------|
-| Startup Discovery | Browse early-stage startups across SaaS, AI, analytics, developer tools, and dozens of other categories. |
-| Daily Newsletter | Receive a daily digest of the newest startups curated by the BetaList team. |
-| Early Access | Get early access to products before they officially launch to the public. |
-| Startup Submissions | Founders can submit their startups for free or pay for expedited review and featuring. |
-| Trending Startups | Discover trending and recently featured startups across all categories. |
-| Search and Browse | Search and filter startups by category, keywords, or launch date. |
+**Kin Score 25.0** — emerging · rubric 0.24.0 · scored 2026-10-17
 
-## Use Cases
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 0.0 |
+| Contract governance | 4.5 |
+| Operational transparency | 2.6 |
+| Developer ergonomics | 35.7 |
+| Access clarity | 44.7 |
 
-| Name | Description |
-|------|-------------|
-| Early Adopter Discovery | Find and sign up for access to new products before they launch to the general public. |
-| Startup Research | Research early-stage startups and emerging companies across technology verticals. |
-| Founder Marketing | Gain initial visibility and early adopter feedback by submitting a startup to BetaList. |
-| Investor Scouting | Discover early-stage companies and track emerging trends in startup categories. |
-| Newsletter Growth | Reach the BetaList audience of engaged early adopters through newsletter featuring. |
+**Agent readiness 5.0** — human-only
 
-## Maintainers
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
 
-**FN:** Kin Lane
+**Regulatory alignment 24.5** — Horizontal (data, software, accessibility, platform)
 
-**Email:** kin@apievangelist.com
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/betalist/](https://apis.io/providers/betalist/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for BetaList: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/betalist/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
